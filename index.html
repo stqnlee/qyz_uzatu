@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Qyz Uzatu</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Cormorant+Garamond:wght@300;400;500;600;700&amp;family=Marck+Script&amp;family=Pinyon+Script&amp;display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="music-control">
+    <svg class="music-text" viewBox="0 0 120 120" aria-hidden="true">
+      <defs>
+        <path id="musicTextPath" d="M 60 60 m -46 0 a 46 46 0 1 1 92 0 a 46 46 0 1 1 -92 0" />
+      </defs>
+      <text>
+        <textPath href="#musicTextPath" startOffset="50%" text-anchor="middle" data-i18n="musicText">
+          Әуенді қосу үшін үстінен басыңыз!
+        </textPath>
+      </text>
+    </svg>
+
+    <button class="music-btn" id="musicBtn" aria-label="Әуенді қосу үшін басыңыз" data-i18n-aria-label="musicText">
+      <span id="musicIcon">▶</span>
+    </button>
+  </div>
+
+  <img src="images/oyu.jpg" class="oyu-top" alt="">
+
+  <section class="hero">
+
+    <img src="images/floral-top.png" class="floral-top" alt="">
+
+    <div class="lang-switch" aria-label="Language switcher">
+      <span class="active" data-lang="kz">KZ</span>
+      <span data-lang="ru">RU</span>
+    </div>
+
+    <h1 class="subtitle" data-i18n="subtitle">QYZ UZATU</h1><br>
+
+    <h1 class="name" data-i18n="brideName">Marzhan</h1><br>
+
+    <h1 class="date">14.08.2026</h1>
+
+    <div class="scroll-down">
+      <span class="scroll-arrow">↓</span>
+      <span class="scroll-text" data-i18n="scrollDownText">ТӨМЕН ТҮСІҢІЗ</span>
+    </div>
+
+  </section>
+
+  <section class="invitation fade-up">
+
+    <h2 data-i18n="invitationTitle">ҚҰРМЕТТІ ҚОНАҚТАР!</h2>
+
+    <p data-i18n-html="invitationText">
+      СІЗДЕРДІ АЯУЛЫ<br>
+      <span class="marzh-">Маржан</span><br>
+      <br>КЫЗЫМЫЗДЫҢ ҰЗАТУ ТОЙЫНА ЖАЙЫЛҒАН<br>
+      САЛТАНАТТЫ АҚ ДАСТАРХАНЫМЫЗДЫҢ<br>
+      ҚАДІРЛІ ҚОНАҒЫ БОЛУҒА ШАҚЫРАМЫЗ!
+    </p>
+
+  </section>
+
+  <section class="event fade-up">
+
+    <h2 data-i18n="eventTitle">Той салтанаты</h2>
+
+    <div class="event-card">
+
+      <h2 data-i18n="eventDate">14 ТАМЫЗ 2026 ЖЫЛ</h2>
+
+      <h2 data-i18n="eventTime">САҒАТ: 19:00</h2>
+
+
+    </div>
+
+  </section>
+
+  <section class="calendar-section fade-up">
+
+    <img src="images/ornament-top.png" class="ornament" alt="">
+
+    <div class="calendar">
+      <div data-i18n="weekdayMon">ДС</div>
+      <div data-i18n="weekdayTue">СС</div>
+      <div data-i18n="weekdayWed">СР</div>
+      <div data-i18n="weekdayThu">БС</div>
+      <div data-i18n="weekdayFri">ЖМ</div>
+      <div data-i18n="weekdaySat">СН</div>
+      <div data-i18n="weekdaySun">ЖС</div>
+
+      <div></div><div></div><div></div><div></div><div></div><div>1</div><div>2</div>
+      <div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div>
+      <div>10</div><div>11</div><div>12</div><div>13</div><div class="heart-day"><span>14</span></div><div>15</div><div>16</div>
+      <div>17</div><div>18</div><div>19</div><div>20</div>
+      <div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div>
+      <div>28</div><div>29</div><div>30</div><div>31</div>
+    </div>
+
+  </section>
+
+  <section class="countdown-section fade-up">
+
+    <div class="countdown-title" data-i18n="countdownTitle">ТОЙҒА ДЕЙІН</div>
+
+    <div class="countdown" id="countdown">
+      Жүктелуде...
+    </div>
+
+  </section>
+
+  <img src="images/oyu.jpg" class="oyu-med" alt="">
+
+  <section class="location-section fade-up">
+
+    <div class="location-container">
+      <h2 data-i18n="locationTitle">Мекенжайымыз</h2>
+      <div class="location-card" data-i18n-html="locationText">
+        АЯГӨЗ ҚАЛАСЫ<br>
+        SAMURYQ МЕЙРАМХАНАСЫ
+      </div>
+
+      <div class="socials">
+        <a href="https://2gis.kz/semey/geo/70000001090447842/80.425318,47.967639" class="social-btn" target="_blank">
+          <img src="images/2gis.webp" alt="2GIS">
+        </a>
+
+        <a href="https://www.instagram.com/samuryq_meiramhana?igsh=ejZmeWI2MzI1c3k1" class="social-btn" target="_blank">
+          <img src="images/instagram.webp" alt="Instagram">
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="owners-section fade-up">
+
+    <img src="images/kazakh-pattern.png" class="ornament" alt="">
+
+    <h2 data-i18n="ownersTitle">Той иелері</h2>
+
+    <div class="owners-names">
+      Серік — Баян
+    </div>
+
+    <img src="images/kazakh-pattern-bott.png" class="ornament-bott" alt="">
+
+  </section>
+
+  <section class="form-section fade-up">
+
+    <h2 data-i18n="formTitle">Қатысу растау</h2>
+
+    <form id="guestForm">
+
+      <input
+        type="text"
+        name="name"
+        placeholder="Аты-жөніңіз"
+        data-i18n-placeholder="namePlaceholder"
+        required
+      >
+
+      <div class="attendance-options">
+
+        <label class="option-card">
+          <input type="radio" name="attendance" value="Иә" data-i18n-value="attendanceYesValue" required>
+          <span data-i18n="attendanceYes">Қуана барамын</span>
+        </label>
+
+        <label class="option-card">
+          <input type="radio" name="attendance" value="Жұбайыммен" data-i18n-value="attendancePartnerValue">
+          <span data-i18n="attendancePartner">Жұбайыммен келемін</span>
+        </label>
+
+        <label class="option-card">
+          <input type="radio" name="attendance" value="Жоқ" data-i18n-value="attendanceNoValue">
+          <span data-i18n="attendanceNo">Келе алмаймын</span>
+        </label>
+
+      </div>
+
+      <textarea
+        name="message"
+        placeholder="Тілектеріңіз"
+        data-i18n-placeholder="messagePlaceholder"
+      ></textarea>
+
+      <button type="submit" data-i18n="submitButton">
+        Жіберу
+      </button>
+
+    </form>
+
+    <div id="successMessage"></div>
+
+  </section>
+
+  <img src="images/floral-bottom.png" class="floral-bottom" alt="">
+
+  <script src="script.js"></script>
+
+</body>
+</html>
