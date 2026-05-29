@@ -546,7 +546,12 @@ button {
   }
 
   [data-i18n="locationTitle"] {
+    display: block;
+    width: 100%;
+    max-width: 100%;
     font-size: clamp(38px, 10vw, 48px);
+    text-align: center;
+    transform: translateX(0);
   }
 
   .invitation p,
