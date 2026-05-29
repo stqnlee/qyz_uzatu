@@ -196,7 +196,11 @@ h2 {
 [data-i18n="locationTitle"],
 [data-i18n="ownersTitle"] {
   font-family: var(--font-script);
-  font-size: 64px;
+  max-width: 100%;
+  font-size: clamp(48px, 12vw, 64px);
+  font-weight: 400;
+  line-height: 1;
+  overflow-wrap: anywhere;
 }
 
 .event-card {
@@ -252,12 +256,15 @@ h2 {
   margin: auto;
 }
 
-.heart-day::before {
-  content: '❤';
+.heart_ {
   position: absolute;
-  margin-top: 8px;
-  font-size: 54px;
-  color: #c8a97e;
+  margin-top: 4px;
+  inset: 50% auto auto 50%;
+  width: 60px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .heart-day span {
@@ -496,6 +503,11 @@ button {
 
   h2 {
     font-size: 34px;
+  }
+
+  [data-i18n="locationTitle"] {
+    width: 100%;
+    font-size: clamp(44px, 14vw, 54px);
   }
 
   .invitation p,
