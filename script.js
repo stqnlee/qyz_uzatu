@@ -36,6 +36,8 @@ const translations = {
     attendanceNoValue: 'Жоқ',
     messagePlaceholder: 'Тілектеріңіз',
     submitButton: 'Жіберу',
+    submitButtonSending: 'Жіберілуде...',
+    submitButtonSent: 'Жіберілді',
     successMessage: 'Жауабыңыз қабылданды',
     errorMessage: 'Қате пайда болды'
   },
@@ -76,6 +78,8 @@ const translations = {
     attendanceNoValue: 'Нет',
     messagePlaceholder: 'Ваши пожелания',
     submitButton: 'Отправить',
+    submitButtonSending: 'Отправляется...',
+    submitButtonSent: 'Отправлено',
     successMessage: 'Ваш ответ принят',
     errorMessage: 'Произошла ошибка'
   }
@@ -174,6 +178,12 @@ const setLanguage = (lang) => {
     btn.classList.toggle('active', btn.dataset.lang === lang)
   })
 
+  if (hasSubmitted) {
+    submitButton.textContent = translations[lang].submitButtonSent
+  } else if (isSubmitting) {
+    submitButton.textContent = translations[lang].submitButtonSending
+  }
+
   updateCountdown()
 }
 
@@ -204,12 +214,28 @@ document.querySelectorAll('.lang-switch span').forEach(btn => {
   })
 })
 
-setLanguage(currentLang)
-
 const form = document.getElementById('guestForm')
+const submitButton = form.querySelector('button[type="submit"]')
+const formFields = form.querySelectorAll('input, textarea, button')
+const successMessage = document.getElementById('successMessage')
+
+let isSubmitting = false
+let hasSubmitted = false
+
+const setFormDisabled = (disabled) => {
+  formFields.forEach((field) => {
+    field.disabled = disabled
+  })
+}
+
+setLanguage(currentLang)
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault()
+
+  if (isSubmitting || hasSubmitted) {
+    return
+  }
 
   const formData = new FormData(form)
 
@@ -219,6 +245,11 @@ form.addEventListener('submit', async (e) => {
     message: formData.get('message')
   }
 
+  isSubmitting = true
+  setFormDisabled(true)
+  submitButton.textContent = translations[currentLang].submitButtonSending
+  successMessage.innerHTML = ''
+
   try {
     await fetch('https://script.google.com/macros/s/AKfycbx10pdteR6VqkxqX-aauZFnYCE2NNMGtXRprom7u2qo_5ScSSAAqZa9c2wqGSQ4pB4O/exec', {
       method: 'POST',
@@ -226,10 +257,15 @@ form.addEventListener('submit', async (e) => {
       body: JSON.stringify(data)
     })
 
-    document.getElementById('successMessage').innerHTML = translations[currentLang].successMessage
-
+    hasSubmitted = true
+    isSubmitting = false
+    submitButton.textContent = translations[currentLang].submitButtonSent
+    successMessage.innerHTML = translations[currentLang].successMessage
     form.reset()
   } catch (error) {
-    document.getElementById('successMessage').innerHTML = translations[currentLang].errorMessage
+    isSubmitting = false
+    setFormDisabled(false)
+    submitButton.textContent = translations[currentLang].submitButton
+    successMessage.innerHTML = translations[currentLang].errorMessage
   }
 })
