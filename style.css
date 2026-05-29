@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 :root {
   --font-display: 'Cinzel', 'Cormorant Garamond', serif;
   --font-script: 'Pinyon Script', 'Anastasia Script', 'Marck Script', cursive;
@@ -11,6 +16,7 @@
 
 body {
   position: relative;
+  width: 100%;
   font-family: 'Cormorant Garamond', serif;
   background: white;
   color: #111;
@@ -159,6 +165,7 @@ body::before {
 }
 
 section {
+  width: 100%;
   padding: 80px 25px;
   text-align: center;
 }
@@ -200,7 +207,9 @@ h2 {
   font-size: clamp(48px, 12vw, 64px);
   font-weight: 400;
   line-height: 1;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .event-card {
@@ -489,30 +498,95 @@ button {
 
 @media (max-width: 768px) {
 
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 70px 20px;
+    overflow-x: hidden;
+  }
+
+  section > * {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .name {
     font-size: clamp(88px, 26vw, 120px);
   }
 
   .subtitle {
-    font-size: 36px;
+    font-size: clamp(28px, 8vw, 36px);
   }
 
   .date {
-    font-size: 40px;
+    font-size: clamp(30px, 8vw, 40px);
   }
 
   h2 {
-    font-size: 34px;
+    font-size: clamp(28px, 7.5vw, 34px);
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .invitation h2 {
+    width: 100%;
+    font-size: clamp(24px, 6.6vw, 31px);
+  }
+
+  [data-i18n="eventTitle"],
+  [data-i18n="locationTitle"],
+  [data-i18n="ownersTitle"] {
+    width: max-content;
+    max-width: calc(100vw - 40px);
+    font-size: clamp(40px, 10.5vw, 50px);
+    line-height: 1.05;
+    white-space: nowrap;
   }
 
   [data-i18n="locationTitle"] {
-    width: 100%;
-    font-size: clamp(44px, 14vw, 54px);
+    font-size: clamp(38px, 10vw, 48px);
   }
 
   .invitation p,
   .event-card p {
-    font-size: 24px;
+    width: 100%;
+    font-size: clamp(23px, 6.2vw, 27px);
+    text-align: center;
+  }
+
+  .invitation span {
+    width: 100%;
+    font-size: clamp(64px, 18vw, 88px);
+    text-align: center;
+  }
+
+  .event-card {
+    width: 100%;
+  }
+
+  .event-card h2 {
+    width: 100%;
+    font-size: clamp(26px, 7vw, 34px);
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .calendar {
+    width: 100%;
+    max-width: 430px;
+    gap: 6px;
+  }
+
+  .calendar div {
+    padding: 12px 8px;
+  }
+
+  .countdown-title {
+    width: 100%;
+    font-size: clamp(26px, 7vw, 34px);
+    text-align: center;
   }
 
   .countdown-grid {
@@ -521,6 +595,28 @@ button {
 
   .countdown {
     font-size: 28px;
+    text-align: center;
+  }
+
+  .location-container {
+    width: 100%;
+    padding: 32px 0;
+    text-align: center;
+  }
+
+  .location-card {
+    width: 100%;
+    font-size: clamp(26px, 7vw, 32px);
+    text-align: center;
+  }
+
+  .owners-names {
+    width: 100%;
+    text-align: center;
+  }
+
+  .form-section form {
+    width: 100%;
   }
 
 }
